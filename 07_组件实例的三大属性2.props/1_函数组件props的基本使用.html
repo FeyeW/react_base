@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hello_react</title>
+</head>
+
+<body>
+    <!-- 准备好一个“容器” -->
+    <div id="test"></div>
+    <div id="test1"></div>
+
+    <!-- 引入react核心库 -->
+    <script type="text/javaScript" src="../js/react.development.js"></script>
+    <!-- 引入react-dom,用于支持react操作DOM -->
+    <script type="text/javaScript" src="../js/react-dom.development.js"></script>
+    <!-- 引入babel，用于将jsx转为js -->
+    <script type="text/javaScript" src="../js/babel.min.js"></script>
+    <!-- 用于对组件标签属性进行限制 -->
+    <script src="../js/prop-types.js"></script>
+
+    <script type="text/babel">
+        function Person(props) {
+            const { name, age, sex } = props
+            return (
+                <ul>
+                    <li>姓名:{name}</li>
+                    <li>年龄:{age}</li>
+                    <li>性别:{sex}</li>
+                </ul>
+            )
+        }
+        //对于标签属性进行类型、必要性的限制
+        Person.propTypes = {
+            name: PropTypes.string.isRequired,
+            sex: PropTypes.string,
+            age: PropTypes.number,
+            speak: PropTypes.func
+        }
+        //指定默认标签属性值
+        Person.defaultProps = {
+            name: 'tom1',
+            age: 18
+        }
+
+        const p = { name: 'Andy', age: 20, sex: '女' }
+        //2.渲染组件到页面
+        ReactDOM.render(<Person sex="女" />, document.getElementById('test'))
+        /*         ReactDOM.render(<Person name="Jerry" age="18" sex="男" />, document.getElementById('test1')) */
+        ReactDOM.render(<Person {...p} />, document.getElementById('test1'))
+    </script>
+</body>
+
+</html>
