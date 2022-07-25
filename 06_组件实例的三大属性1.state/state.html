@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hello_react</title>
+</head>
+
+<body>
+    <!-- 准备好一个“容器” -->
+    <div id="test"></div>
+
+    <!-- 引入react核心库 -->
+    <script type="text/javaScript" src="../js/react.development.js"></script>
+    <!-- 引入react-dom,用于支持react操作DOM -->
+    <script type="text/javaScript" src="../js/react-dom.development.js"></script>
+    <!-- 引入babel，用于将jsx转为js -->
+    <script type="text/javaScript" src="../js/babel.min.js"></script>
+
+    <script type="text/babel">
+     //1.创建组件
+     class Weather extends React.Component{
+        constructor(props)
+        {
+            super(props)
+            this.state={isHot:true}
+            //解决changeWeather中this的指向问题
+            this.changeWheather=this.changeWheather.call(this)
+        }
+        render()
+        {
+            const {isHot} =this.state
+            return <h1 onClick={this.changeWheather}>{isHot?'炎热':'凉爽'}</h1>
+        }
+        changeWheather()
+        {
+            //changeWheather放在Wheather原型对象上，供实例使用
+            //由于changerWheather是作为onClick的回调，所以不是通过实例调用的，而是直接调用
+            //类中的方法默认开启了局部严格始末，所以changeWheather中的this为undefined
+
+        }
+     }
+     //2.渲染组件到页面
+     ReactDOM.render(<Weather/>,document.getElementById('test'))
+    </script>
+</body>
+
+</html>
