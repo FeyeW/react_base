@@ -21,17 +21,28 @@
 
 
     <script type="text/babel">
+        //类似于vue的双向数据绑定
         class Login extends React.Component {
+            state = {
+                username: '',
+                password: ''
+            }
+            saveUsername = () => {
+                this.setState({ username: event.target.value })
+            }
+            savePassword = () => {
+                this.setState({ password: event.target.value })
+            }
             handleSubmit = (event) => {
                 event.preventDefault()//组织表单提交
-                const { username, password } = this
-                alert(`你输入的用户名:${username.value},你输入的密码是:${password.value}`)
+                const { username, password } = this.state
+                alert(`你输入的用户名:${username},你输入的密码是:${password}`)
             }
             render() {
                 return (
                     <form onSubmit={this.handleSubmit}>
-                        用户名：<input ref={c => this.username = c} type="text" name="username" />
-                        密码：<input ref={c => this.password = c} type="text" name="password" />
+                        用户名：<input onChange={this.saveUsername} type="text" name="username" />
+                        密码：<input onChange={this.savePassword} type="text" name="password" />
                         <button>登陆</button>
                     </form>
                 )
