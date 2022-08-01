@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hello_react</title>
+</head>
+
+<body>
+    <!-- 准备好一个“容器” -->
+    <div id="test"></div>
+
+    <!-- 引入react核心库 -->
+    <script type="text/javaScript" src="../js/react.development.js"></script>
+    <!-- 引入react-dom,用于支持react操作DOM -->
+    <script type="text/javaScript" src="../js/react-dom.development.js"></script>
+    <!-- 引入babel，用于将jsx转为js -->
+    <script type="text/javaScript" src="../js/babel.min.js"></script>
+
+
+    <script type="text/babel">
+
+
+        //类似于vue的双向数据绑定
+        class Login extends React.Component {
+            state = {
+                username: '',
+                password: ''
+            }
+            saveFormData = (typeData) => {
+                this.setState({ [typeData]: event.target.value })
+
+            }
+            handleSubmit = (event) => {
+                event.preventDefault()//组织表单提交
+                const { username, password } = this.state
+                alert(`你输入的用户名:${username},你输入的密码是:${password}`)
+            }
+            render() {
+                return (
+                    <form onSubmit={this.handleSubmit}>
+                        用户名：<input onChange={event => this.saveFormData('username', event.value)} type="text" name="username" />
+                        密码：<input onChange={event => this.saveFormData('password', event.value)} type="text" name="password" />
+                        <button>登陆</button>
+                    </form>
+                )
+            }
+        }
+        ReactDOM.render(<Login a="1" />, document.getElementById('test'))
+    </script>
+</body>
+
+</html>
