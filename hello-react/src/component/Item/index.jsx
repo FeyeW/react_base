@@ -18,6 +18,11 @@ export default class Item extends React.Component {
       console.log(event.target.checked)
     }
   }
+  handleDelete = (id) => {
+    if (window.confirm('确定删除嘛？')) {
+      this.props.deleteTodo(id)
+    }
+  }
   render() {
     const { id, name, done } = this.props
     const { mouse } = this.state
@@ -28,7 +33,7 @@ export default class Item extends React.Component {
           <input type="checkbox" defaultChecked={done} onChange={this.handleCheck(id)} />
           <span>{name}</span>
         </label>
-        <button className="btn btn-danger" tyle={{ display: mouse ? 'block' : 'none' }}>删除</button>
+        <button onClick={() => this.handleDelete(id)} className="btn btn-danger" style={{ display: mouse ? 'block' : 'none' }}>删除</button>
       </li>
     )
   }
