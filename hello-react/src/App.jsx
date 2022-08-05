@@ -38,6 +38,22 @@ export default class App extends React.Component {
         })
         this.setState({ todos: newTodos })
     }
+    //用于全选
+    checkAllTodo = (done) => {
+        const { todos } = this.state
+        const newTodos = todos.map((todoObj) => {
+            return { ...todoObj, done: done }
+        })
+        this.setState({ todos: newTodos })
+    }
+    //用于清除所有
+    clearAllDone = () => {
+        const { todos } = this.state
+        const newTodos = todos.filter((todoObj) => {
+            return !todoObj.done
+        })
+        this.setState({ todos: newTodos })
+    }
     render() {
         const { todos } = this.state
         return (
@@ -45,7 +61,7 @@ export default class App extends React.Component {
                 <div className="todo-wrap">
                     <Header addTodo={this.addTodo} />
                     <List todos={todos} updateTodo={this.updateTodo} deleteTodo={this.deleteTodo} />
-                    <Footer />
+                    <Footer todos={todos} checkAllTodo={this.checkAllTodo} clearAllDone={this.clearAllDone} />
                 </div>
             </div>
         )
