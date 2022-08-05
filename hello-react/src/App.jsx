@@ -12,12 +12,19 @@ export default class App extends React.Component {
             { id: '003', name: '打代码', done: false }
         ]
     }
+    //添加一个函数，用于接收List子组件传递数据
+    addTodo = (todoObj) => {
+        const { todos } = this.state
+        const newTodos = [todoObj, ...todos]
+        this.setState({ todos: newTodos, ...todos })
+    }
+
     render() {
         const { todos } = this.state
         return (
             <div className="todo-container">
                 <div className="todo-wrap">
-                    <Header />
+                    <Header addTodo={this.addTodo} />
                     <List todos={todos} />
                     <Footer />
                 </div>
