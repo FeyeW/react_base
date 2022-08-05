@@ -6,7 +6,7 @@ export default class Header extends React.Component {
   handleKeyUp = (event) => {
     const { keyCode, target } = event
     if (keyCode !== 13) return
-    if (target.value.trim() == '') {
+    if (target.value.trim() === '') {
       alert('不能输入空')
     }
     const todoObj = { id: nanoid(), name: target.value, done: false }
