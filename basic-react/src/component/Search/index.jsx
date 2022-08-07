@@ -7,7 +7,7 @@ export default class Sreach extends React.Component {
     const { keyWordElement: { value: keyWord } } = this
     //发起网络请求
     axios.get(`/search/users?q=${keyWord}`).then(
-      response => { console.log('成功了', response.data) },
+      response => { this.props.saveUsers(response.data.items); },
       error => { console.log(error) }
     )
   }
