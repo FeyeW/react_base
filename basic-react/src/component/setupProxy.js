@@ -1,4 +1,4 @@
-/* const { createProxyMiddleware } = request('http-proxy-middleware')
+const { createProxyMiddleware } = request('http-proxy-middleware')
 
 module.exports = function (app) {
     app.use(
@@ -13,4 +13,4 @@ module.exports = function (app) {
             pathRewrite: { '/api': '' }
         }),
     )
-} */
+} 
