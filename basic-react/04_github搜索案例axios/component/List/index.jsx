@@ -1,24 +1,9 @@
 import React from 'react'
-import PubSub from 'pubsub-js'
 
 export default class List extends React.Component {
-    state = {
-        users: [],
-        //判断请求
-        isFirst: true,
-        isLoading: false,
-        err: ''
-    }
-    componentDidMount() {
-        this.token = PubSub.subscribe('data', (_, stateObj) => {
-            this.setState(stateObj)
-        })
-    }
-    componentWillUnmount() {
-        PubSub.unsubscribe(this.token)
-    }
+
     render() {
-        const { users, isFirst, isLoading, err } = this.state
+        const { users, isFirst, isLoading, err } = this.props
         return (
             <div className="row" >
                 {
