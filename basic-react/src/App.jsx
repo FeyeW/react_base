@@ -5,17 +5,22 @@ import Sreach from './component/Search'
 
 
 export default class App extends React.Component {
-    state = { users: [] }
+    state = {
+        users: [],
+        //判断请求
+        isFirst: true,
+        isLoading: false,
+        err: ''
+    }
 
-    saveUsers = (users) => {
-        this.setState({ users })
+    updateAppState = (stateObj) => {
+        this.setState(stateObj)
     }
     render() {
-        const { users } = this.state
         return (
             <div className="container">
-                <Sreach saveUsers={this.saveUsers} />
-                <List users={users} />
+                <Sreach updateAppState={this.updateAppState} />
+                <List {...this.state} />
             </div>
         )
     }
