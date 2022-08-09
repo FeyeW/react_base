@@ -31,7 +31,7 @@ export default function App() {
                             */}
                             <Switch>
                                 <Route exact path="/about" component={About}></Route>
-                                <Route exact path="/home" component={Home}></Route>
+                                <Route path="/home" component={Home}></Route>
                                 <Redirect to="/about"></Redirect>
                             </Switch>
                         </div>
