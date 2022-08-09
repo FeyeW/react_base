@@ -1,5 +1,5 @@
 import React from 'react'
-import { Route, Switch } from 'react-router-dom'
+import { Route } from 'react-router-dom'
 
 /* 
 路由组件与一般组件
@@ -51,14 +51,8 @@ export default function App() {
                 <div className="col-xs-6">
                     <div className="panel">
                         <div className="panel-body">
-                            {/* 
-                            1.通常情况下，path和component是一一对应的关系
-                            2.Switch可以提高路由匹配的效率（单一匹配)
-                            */}
-                            <Switch>
-                                <Route path="/about" component={About}></Route>
-                                <Route path="/home" component={Home}></Route>
-                            </Switch>
+                            <Route path="/about" component={About}></Route>
+                            <Route path="/home" component={Home}></Route>
                         </div>
                     </div>
                 </div>
