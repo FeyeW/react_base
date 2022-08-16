@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Count from './components/Count'
+import Preson from './components/Person'
 
 
 class App extends Component {
@@ -7,6 +8,8 @@ class App extends Component {
         return (
             <div>
                 <Count />
+                <hr />
+                <Preson/>
             </div>
         );
     }
