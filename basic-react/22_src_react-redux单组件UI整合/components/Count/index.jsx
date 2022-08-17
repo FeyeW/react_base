@@ -42,8 +42,8 @@ class Count extends React.Component {
                 <h1>当前求和为:{this.props.count}</h1>&nbsp;
                 <select ref={c => this.selectNumber = c}>
                     <option value="1">1</option>
-                    <option value="1">2</option>
-                    <option value="1">3</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
                 </select>&nbsp;
                 <button onClick={this.increment}>纯➕</button>&nbsp;
                 <button onClick={this.decrement}>纯➖</button>&nbsp;

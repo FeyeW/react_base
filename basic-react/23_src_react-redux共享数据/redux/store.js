@@ -11,10 +11,9 @@ import personReducer from './reducer/person'
 //合并Reducer
 //中间件的使用 用于增加异步的redux功能
 import thunk from 'redux-thunk'
-import { composeWithDevTools } from 'redux-devtools-extension'
 
 const allReducer = combineReducers({
     count: countReducer,
     person: personReducer
 })
-export default createStore(allReducer, composeWithDevTools(applyMiddleware(thunk)))
+export default createStore(allReducer, applyMiddleware(thunk))
